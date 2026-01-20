@@ -1,0 +1,7 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import Section from '../../../components/UI/Section';
+import Card from '../../../components/UI/Card';
+import styles from './ProblemSolution.module.css';
+export default function ProblemSolution() {
+    return (_jsx(Section, { children: _jsxs("div", { className: styles.grid, children: [_jsxs("div", { className: styles.textColumn, children: [_jsxs("h2", { className: styles.heading, children: ["Dashboards show numbers. ", _jsx("br", {}), "Diagrams show intent. ", _jsx("br", {}), _jsx("span", { className: styles.highlight, children: "We show reality." })] }), _jsx("p", { className: styles.copy, children: "Most tools give you one or the other. SpaceConsole AI connects your live data to your actual process flow, giving you the context that raw dashboards lack and the accuracy that static diagrams lose." })] }), _jsx("div", { className: styles.visualColumn, children: _jsxs(Card, { className: styles.comparisonCard, children: [_jsx("div", { className: styles.comparisonHeader, children: "The SpaceConsole AI Way" }), _jsxs("div", { className: styles.comparisonContent, children: [_jsx("div", { className: styles.node, children: "Data" }), _jsx("div", { className: styles.link, children: "+" }), _jsx("div", { className: styles.node, children: "Process Context" }), _jsx("div", { className: styles.link, children: "=" }), _jsx("div", { className: `${styles.node} ${styles.result}`, children: "Actionable Reality" })] })] }) })] }) }));
+}

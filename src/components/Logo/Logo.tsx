@@ -4,9 +4,13 @@ import styles from './Logo.module.css';
 function Logo() {
   return (
     <Link to="/" aria-label="Home" className={styles.link}>
-      <span className={styles.logo}>
-        space<span className={styles.accent}>console</span>
-      </span>
+      <img
+        src="/src/components/Assets/logo_spaceconsole.png"
+        alt="SpaceConsole AI"
+        className={styles.logoImage}
+        style={{ height: '32px' }}
+      />
+      <span className={styles.text}>SpaceConsole</span>
     </Link>
   );
 }

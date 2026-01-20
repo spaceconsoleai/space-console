@@ -1,0 +1,11 @@
+.card {
+    position: relative;
+    overflow: hidden;
+}
+
+.title {
+    margin-bottom: var(--space-sm);
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+    color: var(--color-text-primary);
+}

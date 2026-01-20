@@ -1,6 +1,11 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import styles from './Home.module.css';
-function Home() {
-    return (_jsxs("section", { className: `${styles.container} glass-panel`, children: [_jsxs("header", { className: styles.hero, children: [_jsx("p", { className: styles.eyebrow, children: "AI-first data automation" }), _jsx("h1", { children: "Space Console engineers reliable data pipelines so your team can focus on bold moves." }), _jsx("p", { className: styles.summary, children: "We orchestrate ingestion, transformation, and delivery with guardrails that scale. No noise\u2014just signal." })] }), _jsxs("div", { className: styles.sections, children: [_jsxs("article", { className: `${styles.card} glass-panel`, children: [_jsx("h2", { children: "Operational clarity" }), _jsx("p", { children: "Monitor every job in real time and surface only what matters. Forecast issues before they land in your inbox." })] }), _jsxs("article", { className: `${styles.card} glass-panel`, children: [_jsx("h2", { children: "Launch faster" }), _jsx("p", { children: "Press go on new pipelines with reusable components and guardrails that learn from your environment." })] }), _jsxs("article", { className: `${styles.card} glass-panel`, children: [_jsx("h2", { children: "Scale with trust" }), _jsx("p", { children: "Governance, logging, and compliance built-in. Audit trails, versioning, and recovery by default." })] })] })] }));
+import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
+import Hero from './components/Hero';
+import SocialProof from './components/SocialProof';
+import ProblemSolution from './components/ProblemSolution';
+import HowItWorks from './components/HowItWorks';
+import Features from './components/Features';
+import HomeCTA from './components/HomeCTA';
+import SEO from '../../components/SEO';
+export default function Home() {
+    return (_jsxs(_Fragment, { children: [_jsx(SEO, { title: "Space Console AI | Turn Operations into Live Systems", description: "Map your process with AI, measure live KPIs, and fix bottlenecks. SpaceConsole AI transforms static workflows into real-time operational systems.", keywords: ['AI process mapping', 'value stream management', 'operational excellence', 'workflow optimization', 'bottleneck detection'] }), _jsx(Hero, {}), _jsx(SocialProof, {}), _jsx(ProblemSolution, {}), _jsx(HowItWorks, {}), _jsx(Features, {}), _jsx(HomeCTA, {})] }));
 }
-export default Home;

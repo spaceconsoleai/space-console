@@ -1,0 +1,72 @@
+.grid {
+    display: grid;
+    gap: clamp(3rem, 5vw, 5rem);
+    align-items: center;
+}
+
+.heading {
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.2;
+    margin-bottom: var(--space-md);
+}
+
+.highlight {
+    color: var(--color-primary);
+    /* or a nice accent color */
+    background: linear-gradient(90deg, #fff, #999);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.copy {
+    font-size: 1.125rem;
+    max-width: 500px;
+}
+
+.comparisonCard {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.comparisonHeader {
+    margin-bottom: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-secondary);
+}
+
+.comparisonContent {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.node {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.result {
+    border-color: var(--color-text-primary);
+    background: rgba(255, 255, 255, 0.1);
+    font-weight: 700;
+}
+
+.link {
+    color: var(--color-text-secondary);
+    font-size: 1.5rem;
+}
+
+@media (min-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}

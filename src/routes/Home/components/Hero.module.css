@@ -1,0 +1,109 @@
+.heroSection {
+    padding-top: clamp(4rem, 8vw, 8rem);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.gradientText {
+    background: linear-gradient(135deg, #fff 30%, #a5a5a5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    max-width: 600px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+.actions {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cta {
+    min-width: 160px;
+}
+
+/* Visual Mock */
+.visualPlaceholder {
+    width: 100%;
+    max-width: 1000px;
+    height: clamp(300px, 50vh, 500px);
+    margin-top: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.visualGrid {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    opacity: 0.8;
+}
+
+.mockMapItem {
+    border: 1px solid var(--color-border);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    background: var(--color-surface);
+    position: relative;
+}
+
+.highlight {
+    border-color: var(--color-primary);
+    /* Fallback */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.mockBadge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #d64040;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.mockMapArrow {
+    font-size: 1.5rem;
+    color: var(--color-text-secondary);
+}
+
+.visualCaption {
+    position: absolute;
+    bottom: 1rem;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    opacity: 0.6;
+}

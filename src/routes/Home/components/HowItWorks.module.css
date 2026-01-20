@@ -1,0 +1,48 @@
+.centerTitle {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    font-size: 2.5rem;
+}
+
+.stepsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.step {
+    padding: 2rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.step:hover {
+    transform: translateY(-5px);
+    background: var(--color-surface-2);
+}
+
+.number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.05);
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    line-height: 1;
+}
+
+.stepTitle {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    /* above number */
+}
+
+.stepDesc {
+    font-size: 0.95rem;
+    position: relative;
+}

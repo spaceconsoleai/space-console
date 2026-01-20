@@ -1,24 +1,47 @@
-import { Route, Routes } from 'react-router-dom';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import Home from './routes/Home/index';
-import About from './routes/About/index';
-import Contact from './routes/Contact/index';
-import styles from './App.module.css';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import Layout from './components/Layout/Layout';
+import { useEffect } from 'react';
+
+import Home from './routes/Home';
+import Product from './routes/Product';
+import UseCases from './routes/UseCases';
+import UseCaseTemplate from './routes/UseCases/UseCaseTemplate';
+import Pricing from './routes/Pricing';
+import Integrations from './routes/Integrations';
+import Resources from './routes/Resources';
+import Company from './routes/Company';
+import BookDemo from './routes/BookDemo';
+import Privacy from './routes/Legal/Privacy';
+import Terms from './routes/Legal/Terms';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   return (
-    <div className={styles.app}>
-      <Header />
-      <main className={styles.main}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
+    <Layout>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/product" element={<Product />} />
+        <Route path="/use-cases" element={<UseCases />} />
+        <Route path="/use-cases/:slug" element={<UseCaseTemplate />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/integrations" element={<Integrations />} />
+        <Route path="/resources" element={<Resources />} />
+        <Route path="/company" element={<Company />} />
+        <Route path="/book-demo" element={<BookDemo />} />
+        <Route path="/legal/privacy" element={<Privacy />} />
+        <Route path="/legal/terms" element={<Terms />} />
+      </Routes>
+    </Layout>
   );
 }
 

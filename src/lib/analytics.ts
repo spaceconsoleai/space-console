@@ -4,6 +4,13 @@
 //  initAnalytics({ provider: 'plausible', domain: 'space-console.com' });
 //  initAnalytics({ provider: 'vercel', vercelScriptSrc: 'https://example.com/vercel.js' });
 
+declare global {
+  interface Window {
+    __PLAUSIBLE_DOMAIN?: string;
+    __VERCEL_SCRIPT_SRC?: string;
+  }
+}
+
 type AnalyticsConfig = {
   provider?: 'plausible' | 'vercel';
   domain?: string; // for plausible
@@ -18,7 +25,7 @@ export function initAnalytics(config?: AnalyticsConfig) {
 
   try {
     if (provider === 'plausible') {
-      const domain = config?.domain || (import.meta.env.VITE_PLAUSIBLE_DOMAIN as string) || (window as any).__PLAUSIBLE_DOMAIN;
+      const domain = config?.domain || (import.meta.env.VITE_PLAUSIBLE_DOMAIN as string) || window.__PLAUSIBLE_DOMAIN;
       if (!domain) return;
       const script = document.createElement('script');
       script.setAttribute('defer', 'true');
@@ -28,7 +35,7 @@ export function initAnalytics(config?: AnalyticsConfig) {
     }
 
     if (provider === 'vercel') {
-      const src = config?.vercelScriptSrc || (import.meta.env.VITE_VERCEL_SCRIPT as string) || (window as any).__VERCEL_SCRIPT_SRC;
+      const src = config?.vercelScriptSrc || (import.meta.env.VITE_VERCEL_SCRIPT as string) || window.__VERCEL_SCRIPT_SRC;
       if (!src) return;
       const script = document.createElement('script');
       script.setAttribute('defer', 'true');

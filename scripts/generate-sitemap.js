@@ -1,20 +1,52 @@
-// Simple sitemap generator used during build (ESM)
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const routes = ['/', '/about', '/contact'];
-const base = 'https://space-console.com';
+// Base URL - change this to your actual domain
+const BASE_URL = 'https://space-console.com';
 
-const urlset = routes
-  .map((r) => `  <url>\n    <loc>${base}${r}</loc>\n    <priority>${r === '/' ? '1.0' : '0.8'}</priority>\n  </url>`)
-  .join('\n');
+const routes = [
+  '/',
+  '/product',
+  '/use-cases',
+  '/use-cases/manufacturing',
+  '/use-cases/service-ops',
+  '/use-cases/sales-revops',
+  '/use-cases/marketing',
+  '/pricing',
+  '/integrations',
+  '/resources',
+  '/company',
+  '/book-demo',
+  '/legal/privacy',
+  '/legal/terms'
+];
 
-const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlset}\n</urlset>`;
+function generateSitemap() {
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  ${routes
+      .map((route) => {
+        return `
+  <url>
+    <loc>${BASE_URL}${route}</loc>
+    <changefreq>weekly</changefreq>
+    <priority>${route === '/' ? '1.0' : '0.8'}</priority>
+  </url>`;
+      })
+      .join('')}
+</urlset>`;
 
-const outPath = path.join(__dirname, '..', 'public', 'sitemap.xml');
-fs.mkdirSync(path.dirname(outPath), { recursive: true });
-fs.writeFileSync(outPath, xml, 'utf8');
-console.log('sitemap generated:', outPath);
+  const publicDir = path.resolve(__dirname, '../public');
+
+  if (!fs.existsSync(publicDir)) {
+    fs.mkdirSync(publicDir);
+  }
+
+  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemap);
+  console.log('Sitemap generated at public/sitemap.xml');
+}
+
+generateSitemap();

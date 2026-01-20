@@ -1,0 +1,70 @@
+.container {
+    display: grid;
+    gap: 4rem;
+}
+
+.textColumn {
+    padding-right: 2rem;
+}
+
+.formColumn {
+    width: 100%;
+    max-width: 500px;
+    justify-self: center;
+    /* center the form if single column */
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.field label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+.field input,
+.field select,
+.field textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 0.75rem;
+    color: var(--color-text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: var(--color-text-secondary);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 900px) {
+    .container {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+
+    .formColumn {
+        justify-self: start;
+    }
+}

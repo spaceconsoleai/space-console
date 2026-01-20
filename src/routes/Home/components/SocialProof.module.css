@@ -1,0 +1,29 @@
+.section {
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    /* slightly distinct bg */
+}
+
+.label {
+    text-align: center;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-lg);
+}
+
+.logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(2rem, 5vw, 4rem);
+    opacity: 0.6;
+}
+
+.logoPlaceholder {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--color-text-secondary);
+}
