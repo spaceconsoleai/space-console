@@ -3,6 +3,7 @@ import Logo from '../Logo/Logo';
 import Button from '../UI/Button';
 import styles from './Header.module.css';
 import { useState } from 'react';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 
 const links = [
   { to: '/product', label: 'Product' },
@@ -39,6 +40,7 @@ function Header() {
         </nav>
 
         <div className={styles.actions}>
+          <ThemeToggle />
           <Button to="/book-demo" variant="glass" className={styles.cta}>
             Book a Demo
           </Button>
