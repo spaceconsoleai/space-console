@@ -115,6 +115,11 @@
   transform: translateY(0);
 }
 
+[data-theme='light'] .glass-cta:hover {
+  color: black;
+}
+
+
 /* subtle inset highlight for glass surfaces */
 .glass-panel::after {
   content: '';

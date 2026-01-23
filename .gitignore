@@ -4,4 +4,4 @@ dist
 *.log
 *.local
 *.cache
-*.env
+.env

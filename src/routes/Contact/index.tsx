@@ -2,7 +2,8 @@ import { useState } from 'react';
 import styles from './Contact.module.css';
 
 // Replace this with your real Formspree endpoint, e.g. https://formspree.io/f/xxxxxxxx
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xqayvrke';
+const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || 'https://formspree.io/f/xqayvrke'; // Fallback for dev if env missing, but prefer env
+
 
 function Contact() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');

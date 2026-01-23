@@ -19,9 +19,12 @@
 }
 
 .primary:hover {
-  background-color: #e6e6e6; /* slightly dark white */
+  background-color: #e6e6e6;
+  /* slightly dark white */
+  color: #0b0b0b;
   transform: translateY(-1px);
 }
+
 
 .secondary {
   background-color: transparent;
@@ -38,7 +41,7 @@
   color: var(--color-text-primary);
   padding: 0.5rem 1rem;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(4px);
 }
 
