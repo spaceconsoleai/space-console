@@ -1,10 +1,43 @@
+import { useState } from 'react';
 import Section from '../../components/UI/Section';
 import Card from '../../components/UI/Card';
 import Button from '../../components/UI/Button';
 import styles from './BookDemo.module.css';
 import SEO from '../../components/SEO';
 
+// Replace this with your real Formspree endpoint, e.g. https://formspree.io/f/xxxxxxxx
+const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || 'https://formspree.io/f/xqayvrke';
+
 export default function BookDemo() {
+    const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        setStatus('sending');
+
+        const form = e.currentTarget;
+        const data = new FormData(form);
+
+        try {
+            const res = await fetch(FORMSPREE_ENDPOINT, {
+                method: 'POST',
+                body: data,
+                headers: {
+                    Accept: 'application/json',
+                },
+            });
+
+            if (res.ok) {
+                setStatus('success');
+                form.reset();
+            } else {
+                setStatus('error');
+            }
+        } catch (err) {
+            setStatus('error');
+        }
+    }
+
     return (
         <>
             <SEO
@@ -32,31 +65,31 @@ export default function BookDemo() {
 
                     <div className={styles.formColumn}>
                         <Card className="glass-panel" style={{ padding: '2rem' }}>
-                            <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+                            <form className={styles.form} onSubmit={handleSubmit}>
                                 <div className={styles.field}>
                                     <label>Work Email</label>
-                                    <input type="email" placeholder="name@company.com" required />
+                                    <input name="email" type="email" placeholder="name@company.com" required />
                                 </div>
 
                                 <div className={styles.row}>
                                     <div className={styles.field}>
                                         <label>First Name</label>
-                                        <input type="text" placeholder="Jane" required />
+                                        <input name="firstName" type="text" placeholder="Jane" required />
                                     </div>
                                     <div className={styles.field}>
                                         <label>Last Name</label>
-                                        <input type="text" placeholder="Doe" required />
+                                        <input name="lastName" type="text" placeholder="Doe" required />
                                     </div>
                                 </div>
 
                                 <div className={styles.field}>
                                     <label>Company Name</label>
-                                    <input type="text" placeholder="Acme Inc" required />
+                                    <input name="company" type="text" placeholder="Acme Inc" required />
                                 </div>
 
                                 <div className={styles.field}>
                                     <label>Role</label>
-                                    <select>
+                                    <select name="role">
                                         <option value="">Select...</option>
                                         <option value="ops">Operations Leader</option>
                                         <option value="product">Product Manager</option>
@@ -68,13 +101,29 @@ export default function BookDemo() {
 
                                 <div className={styles.field}>
                                     <label>Anything specific you&apos;d like to see?</label>
-                                    <textarea rows={3} placeholder="e.g. How to map a Jira workflow..."></textarea>
+                                    <textarea name="message" rows={3} placeholder="e.g. How to map a Jira workflow..."></textarea>
                                 </div>
 
-                                <Button type="submit" style={{ width: '100%', marginTop: '1rem' }}>Request Demo</Button>
-                                <p style={{ fontSize: '0.8rem', textAlign: 'center', marginTop: '1rem', color: 'var(--color-text-secondary)' }}>
-                                    We&apos;ll be in touch within 1 business day.
-                                </p>
+                                <Button type="submit" style={{ width: '100%', marginTop: '1rem' }} disabled={status === 'sending'}>
+                                    {status === 'sending' ? 'Sending…' : 'Request Demo'}
+                                </Button>
+
+                                {status === 'success' && (
+                                    <p style={{ color: 'var(--color-primary)', textAlign: 'center', marginTop: '1rem' }}>
+                                        Thanks — we'll be in touch within 1 business day.
+                                    </p>
+                                )}
+                                {status === 'error' && (
+                                    <p style={{ color: 'red', textAlign: 'center', marginTop: '1rem' }}>
+                                        Sorry, something went wrong. Try again later.
+                                    </p>
+                                )}
+
+                                {status === 'idle' && (
+                                    <p style={{ fontSize: '0.8rem', textAlign: 'center', marginTop: '1rem', color: 'var(--color-text-secondary)' }}>
+                                        We&apos;ll be in touch within 1 business day.
+                                    </p>
+                                )}
                             </form>
                         </Card>
                     </div>
